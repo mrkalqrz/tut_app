@@ -1,5 +1,6 @@
 import 'package:flutter_application_sample/data/data_source/remote_data_source.dart';
 import 'package:flutter_application_sample/data/mapper/mapper.dart';
+import 'package:flutter_application_sample/data/network/error_handler.dart';
 import 'package:flutter_application_sample/data/network/network_info.dart';
 import 'package:flutter_application_sample/domain/model.dart';
 import 'package:flutter_application_sample/data/request/request.dart';
@@ -16,21 +17,25 @@ class RepositoryImpl extends Repository {
   Future<Either<Failure, Authentication>> login(
       LoginRequest loginRequest) async {
     if (await _networkInfo.isConnected) {
-      //its safe to call the api
-      final response = await _remoteDataSource.login(loginRequest);
+      try {
+        //its safe to call the api
+        final response = await _remoteDataSource.login(loginRequest);
 
-      if (response.status == 0) {
-        //success return data
-        // return right
-        return Right(response.toDomain());
-      } else {
-        //return biz logic error
-        return Left(Failure(
-            409, response.message ?? "we have biz error logic from API side"));
+        if (response.status == ApiInternalStatus.SUCCESS) {
+          //success return data
+          // return right
+          return Right(response.toDomain());
+        } else {
+          //return biz logic error
+          return Left(Failure(response.status ?? ApiInternalStatus.FAILURE,
+              response.message ?? ResponseMessage.DEFAULT));
+        }
+      } catch (error) {
+        return (Left(ErrorHandler.handle(error).failure));
       }
     } else {
       //return connection error
-      return Left(Failure(501, "please check your network connection"));
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
 }
