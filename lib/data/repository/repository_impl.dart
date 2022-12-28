@@ -2,11 +2,11 @@ import 'package:flutter_application_sample/data/data_source/remote_data_source.d
 import 'package:flutter_application_sample/data/mapper/mapper.dart';
 import 'package:flutter_application_sample/data/network/error_handler.dart';
 import 'package:flutter_application_sample/data/network/network_info.dart';
-import 'package:flutter_application_sample/domain/model.dart';
+import 'package:flutter_application_sample/domain/model/model.dart';
 import 'package:flutter_application_sample/data/request/request.dart';
 import 'package:flutter_application_sample/data/network/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_application_sample/domain/repository.dart';
+import 'package:flutter_application_sample/domain/repository/repository.dart';
 
 class RepositoryImpl extends Repository {
   RemoteDataSource _remoteDataSource;

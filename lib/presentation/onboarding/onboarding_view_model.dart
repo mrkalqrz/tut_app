@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_application_sample/domain/model.dart';
+import 'package:flutter_application_sample/domain/model/model.dart';
 import 'package:flutter_application_sample/presentation/base/base_view_model.dart';
 import 'package:flutter_application_sample/presentation/resources/assets_manager.dart';
 import 'package:flutter_application_sample/presentation/resources/strings_manager.dart';
