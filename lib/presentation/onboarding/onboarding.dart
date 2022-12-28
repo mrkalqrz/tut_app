@@ -4,6 +4,7 @@ import 'package:flutter_application_sample/domain/model/model.dart';
 import 'package:flutter_application_sample/presentation/onboarding/onboarding_view_model.dart';
 import 'package:flutter_application_sample/presentation/resources/assets_manager.dart';
 import 'package:flutter_application_sample/presentation/resources/color_manager.dart';
+import 'package:flutter_application_sample/presentation/resources/routes_manager.dart';
 import 'package:flutter_application_sample/presentation/resources/strings_manager.dart';
 import 'package:flutter_application_sample/presentation/resources/values_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -73,7 +74,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    Text("skip");
+                    Navigator.pushReplacementNamed(context, Routes.loginRoute);
                   },
                   child: Text(
                     AppStrings.skip,
