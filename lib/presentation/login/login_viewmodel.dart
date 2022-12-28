@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter_application_sample/domain/usecase/login_usecase.dart';
 import 'package:flutter_application_sample/presentation/base/base_view_model.dart';
+import 'package:flutter_application_sample/presentation/common/freezed_data_classes.dart';
 
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
@@ -9,6 +11,12 @@ class LoginViewModel extends BaseViewModel
 
   StreamController _passwordStreamController =
       StreamController<String>.broadcast();
+
+  var loginObject = LoginObject("", "");
+
+  LoginUseCase? _loginUseCase;
+
+  LoginViewModel(this._loginUseCase);
 
   // inputs
   @override
@@ -31,21 +39,32 @@ class LoginViewModel extends BaseViewModel
   Sink get inputUserName => _userNameStreamController.sink;
 
   @override
-  login() {
-    // TODO: implement login
-    throw UnimplementedError();
+  login() async {
+    (await _loginUseCase!.execute(
+            LoginUseCaseInput(loginObject.userName, loginObject.password)))
+        .fold(
+            (failure) => {
+                  // left -> failure
+                  print(failure.message)
+                },
+            (data) => {
+                  // right _> success (data)
+                  print(data.customer?.name)
+                });
   }
 
   @override
   setUserName(String userName) {
-    // TODO: implement setUserName
-    throw UnimplementedError();
+    inputUserName.add(userName);
+    loginObject.copyWith(
+        userName: userName); // data class operation same as kotlin
   }
 
   @override
-  setUserPassword(String password) {
-    // TODO: implement setUserPassword
-    throw UnimplementedError();
+  setPassword(String password) {
+    inputPassword.add(password);
+    loginObject.copyWith(
+        password: password); // data class operation same as kotlin
   }
 
   // outputs
@@ -72,7 +91,7 @@ class LoginViewModel extends BaseViewModel
 abstract class LoginViewModelInputs {
   // 3 functions
   setUserName(String userName);
-  setUserPassword(String password);
+  setPassword(String password);
   login();
 
   // 2 sinks
