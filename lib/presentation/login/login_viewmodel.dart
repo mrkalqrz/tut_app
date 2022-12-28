@@ -63,4 +63,5 @@ abstract class LoginViewModelInputs {
 abstract class LoginViewModelOutputs {
   Stream<bool> get outputIsUserNameValid;
   Stream<bool> get outputIsPasswordValid;
+  //test
 }
