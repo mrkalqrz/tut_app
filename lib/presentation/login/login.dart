@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_sample/app/di.dart';
-import 'package:flutter_application_sample/data/data_source/remote_data_source.dart';
-import 'package:flutter_application_sample/data/repository/repository_impl.dart';
-import 'package:flutter_application_sample/domain/repository/repository.dart';
-import 'package:flutter_application_sample/domain/usecase/login_usecase.dart';
 import 'package:flutter_application_sample/presentation/login/login_viewmodel.dart';
 import 'package:flutter_application_sample/presentation/resources/assets_manager.dart';
 import 'package:flutter_application_sample/presentation/resources/color_manager.dart';
 import 'package:flutter_application_sample/presentation/resources/routes_manager.dart';
 import 'package:flutter_application_sample/presentation/resources/strings_manager.dart';
 import 'package:flutter_application_sample/presentation/resources/values_manager.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -49,7 +44,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: ColorManager.white,
       body: Container(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: AppPadding.p100,
         ),
         child: SingleChildScrollView(
@@ -57,12 +52,12 @@ class _LoginViewState extends State<LoginView> {
             key: _formKey,
             child: Column(
               children: [
-                Image(
+                const Image(
                   image: AssetImage(ImageAssets.splashLogo),
                 ),
-                SizedBox(height: AppSize.s28),
+                const SizedBox(height: AppSize.s28),
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: AppPadding.p28,
                     right: AppPadding.p28,
                   ),
@@ -83,9 +78,9 @@ class _LoginViewState extends State<LoginView> {
                     },
                   ),
                 ),
-                SizedBox(height: AppSize.s28),
+                const SizedBox(height: AppSize.s28),
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: AppPadding.p28,
                     right: AppPadding.p28,
                   ),
@@ -106,9 +101,9 @@ class _LoginViewState extends State<LoginView> {
                     },
                   ),
                 ),
-                SizedBox(height: AppPadding.p28),
+                const SizedBox(height: AppPadding.p28),
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: AppPadding.p28,
                     right: AppPadding.p28,
                   ),
@@ -124,7 +119,7 @@ class _LoginViewState extends State<LoginView> {
                                   _viewModel.login();
                                 }
                               : null,
-                          child: Text(
+                          child: const Text(
                             AppStrings.login,
                           ),
                         ),
@@ -133,7 +128,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     top: AppPadding.p8,
                     left: AppPadding.p28,
                     right: AppPadding.p28,

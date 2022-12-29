@@ -31,7 +31,7 @@ class LoginViewModel extends BaseViewModel
 
   @override
   void start() {
-    // TODO: implement start
+    //
   }
 
   @override
