@@ -1,4 +1,3 @@
-import 'package:flutter_application_sample/app/constant.dart';
 import 'package:flutter_application_sample/presentation/resources/language_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

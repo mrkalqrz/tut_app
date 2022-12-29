@@ -43,7 +43,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   Widget _getContentWidget(SliderViewObject? sliderViewObject) {
     if (sliderViewObject == null) {
       return Container();
-    } else
+    } else {
       return Scaffold(
         backgroundColor: ColorManager.white,
         appBar: AppBar(
@@ -89,6 +89,7 @@ class _OnboardingViewState extends State<OnboardingView> {
           ),
         ),
       );
+    }
   }
 
   Widget _getBottomSheetWidget(SliderViewObject sliderViewObject) {
@@ -99,7 +100,7 @@ class _OnboardingViewState extends State<OnboardingView> {
         children: [
           //left arrow
           Padding(
-            padding: EdgeInsets.all(AppPadding.p14),
+            padding: const EdgeInsets.all(AppPadding.p14),
             child: GestureDetector(
               child: SizedBox(
                 height: AppSize.s20,
@@ -122,7 +123,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             children: [
               for (int i = 0; i < sliderViewObject.numOfSlides; i++)
                 Padding(
-                  padding: EdgeInsets.all(AppPadding.p8),
+                  padding: const EdgeInsets.all(AppPadding.p8),
                   child: _getProperCircle(i, sliderViewObject.currentIndex),
                 ),
             ],

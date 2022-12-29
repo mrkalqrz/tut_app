@@ -25,7 +25,6 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _startDelay();
   }
@@ -33,7 +32,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void dispose() {
     _timer?.cancel();
-    // TODO: implement dispose
+
     super.dispose();
   }
 
@@ -41,7 +40,7 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.primary,
-      body: Center(
+      body: const Center(
         child: Image(
           image: AssetImage(ImageAssets.splashLogo),
         ),
